@@ -27,7 +27,7 @@ import java.util.Optional;
 public class PaymentController {
     private  final IPaymentModelService paymentModelService;
     @RequestMapping("/create")
-    public Object create(@RequestBody Payment payment) {
+    public Integer create(@RequestBody Payment payment) {
         return paymentModelService.create(payment);
     }
 
