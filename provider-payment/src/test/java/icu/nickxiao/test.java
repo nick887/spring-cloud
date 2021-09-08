@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author nick
  * @version 1.0, 2021/9/7
@@ -14,12 +17,9 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 public class test {
-    @Autowired
-    private PaymentStructkit structkit;
     @Test
     public void foo()
     {
-        Payment asdf = structkit.toEntity(PaymentDto.builder().id(1L).serial("asdf").build());
-        System.out.println(asdf);
+        List<String> a = new LinkedList<>();
     }
 }

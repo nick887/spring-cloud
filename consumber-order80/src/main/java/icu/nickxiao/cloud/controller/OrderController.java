@@ -1,6 +1,7 @@
 package icu.nickxiao.cloud.controller;
 
 import icu.nickxiao.cloud.entity.Payment;
+import icu.nickxiao.cloud.service.PaymentFeignService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -19,19 +20,17 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 @Slf4j
 public class OrderController {
-    private final RestTemplate restTemplate;
+    private final PaymentFeignService paymentFeignService;
 
-    public static final String URL_PREFIX="http://CLOUD-PAYMENT-SERVICE";
 
     @RequestMapping("/create")
     public int create(@RequestBody Payment payment){
-        return restTemplate.postForObject(URL_PREFIX+"/create",payment,Integer.class);
+        return paymentFeignService.create(payment);
     }
 
 
     @RequestMapping("/getById/{id}")
     public Payment getPayment(@PathVariable("id") Long id){
-        log.info("yes");
-        return restTemplate.getForObject(URL_PREFIX+"/getById/"+id,Payment.class);
+        return paymentFeignService.getById(id);
     }
 }
